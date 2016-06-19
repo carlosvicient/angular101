@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="app">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <style>
+            .hotel-name {
+                font-weight: bold;
+            }
+
+            .hotel-rating {
+                font-size: 1.1em;
+                color: #aa9200;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div>
+            <input type="text" ng-model="search" placeholder="Buscar...">
+            <label>
+                <input type="radio" ng-model="sortBy" value="name"/>
+                Ordenar por nombre
+            </label>
+            <label>
+                <input type="radio" ng-model="sortBy" value="rating"/>
+                Ordenar por puntuación
+            </label>
+            <label>
+                <input type="checkbox" ng-model="reverse"/>
+                Orden inverso
+            </label>
+        </div>
+
+        <div ng-init="hotels=[{name:'a: Winterfell Palace', rating:'5'}, {name:'c: Hostal the Wall', rating:'2'}, {name:'b: Volantis Plaza', rating:'4'}]">
+            <h1>Hoteles</h1>
+            <ul>
+                <li ng-repeat="hotel in hotels | filter:search | orderBy:sortBy:reverse">
+                    <span class="hotel-name">{{hotel.name | uppercase}}</span>
+                    <span class="hotel-rating">{{hotel.rating | number:1}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <script src="./app.module.js"></script>
+    </body>
+</html>
+<!--{name:search}-->

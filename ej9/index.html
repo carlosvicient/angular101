@@ -1,0 +1,50 @@
+<!doctype html>
+<!--Indicamos que el elemento html es el root de nuestra aplicación AngularJS-->
+<!--Y que toda la lógica de la aplicación esta encapsulada en el módulo con nombre "app"-->
+<html ng-app="app">
+    <head>
+        <!-- Importamos Angular 1.5 desde cdn de google -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+        <!-- Importamos nuestro css-->
+        <link rel="stylesheet" type="text/css" href="app.css">
+    </head>
+
+    <!-- Tod0 el código dentro del elemento body se gestionará -->
+    <!-- por el controlador con nombre "AppController". Además,-->
+    <!-- usamos creamos un "alias" para usar el controlador "appCtrl" -->
+    <body ng-controller="AppController as appCtrl">
+
+        <!-- Filtros buscar y ordenar -->
+        <div>
+            <input type="text" ng-model="appCtrl.search" placeholder="Buscar...">
+            <label>
+                <input type="radio" ng-model="appCtrl.sortBy" value="name"/>
+                Ordenar por nombre
+            </label>
+            <label>
+                <input type="radio" ng-model="appCtrl.sortBy" value="rating"/>
+                Ordenar por puntuación
+            </label>
+            <label>
+                <input type="checkbox" ng-model="appCtrl.reverse"/>
+                Orden inverso
+            </label>
+        </div>
+
+        <!-- Lista de hotes-->
+        <div>
+            <h1>Hoteles</h1>
+            <ul>
+                <li ng-repeat="hotel in appCtrl.hotels | filter:appCtrl.search | orderBy:appCtrl.sortBy:appCtrl.reverse">
+                    <span class="hotel-name">{{hotel.name | uppercase}}</span>
+                    <span class="hotel-rating">{{hotel.rating | number:1}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Importación scripts propios -->
+        <script src="./app.module.js"></script>
+        <script src="./app.controller.js"></script>
+    </body>
+</html>

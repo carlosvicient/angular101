@@ -1,0 +1,66 @@
+<section class="mainbar">
+  <section class="matter">
+    <div class="container">
+
+      <!-- Fila filtros -->
+      <div class="row">
+        <!-- Filtros buscar y ordenar -->
+        <div>
+          <input type="text" ng-model="vm.search" placeholder="Buscar...">
+          <label>
+            <input type="radio" ng-model="vm.sortBy" value="name"/>
+            Ordenar por nombre
+          </label>
+          <label>
+            <input type="radio" ng-model="vm.sortBy" value="rating"/>
+            Ordenar por puntuación
+          </label>
+          <label>
+            <input type="checkbox" ng-model="vm.reverse"/>
+            Orden inverso
+          </label>
+        </div>
+      </div>
+
+      <!-- Fila hoteles -->
+      <div class="row">
+
+        <!-- Widget hoteles -->
+        <div class="widget wviolet">
+          <!-- Titulo (header) -->
+          <div ht-widget-header title="{{vm.title}}"></div>
+
+          <!-- Contenido del widget (todos los hoteles)-->
+          <div class="widget-content user">
+
+            <div class="row">
+              <!-- Cada hotel ocupa media pantalla. Repetimos este elemento tanto como hoteles tenemos -->
+              <div class="col-sm-6" ng-repeat="hotel in vm.hotels | filter:vm.search | orderBy:vm.sortBy:vm.reverse" >
+                <!-- Card -->
+                <div class="card">
+                  <!-- primera parte: nombre y puntuación. -->
+                  <div class="card-block">
+                    <h4 class="card-title hotel-name">{{hotel.name | uppercase}}</h4>
+                    <h6 class="card-subtitle text-muted">Puntuación:
+                      <i ng-repeat="star in vm.getNumber(hotel.rating) track by $index"class="fa fa-star fa2"></i>
+                      <i ng-repeat="star in vm.getNumber(5-hotel.rating) track by $index" class="fa fa-star-o"></i>
+                    </h6>
+                  </div>
+
+                  <!-- Segunda parte: imagen -->
+                  <img ng-src="images/hotels/{{hotel.img}}"/>
+                  <!-- Tercera parte: descripcion -->
+                  <div class="card-block">
+                    <p class="card-text">{{hotel.description}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="widget-foot">
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
