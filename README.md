@@ -34,3 +34,7 @@ Situarse en la carpeta ej10 y ejecutar los siguientes comandos para que se desca
  - `bower install`
 
 El resto de instrucciones se pueden consultar en el README.md del directorio ej10
+
+### Ejecutar ejemplo 10
+
+Situarse en ej10 y ejecutar `gulp serve-dev`
