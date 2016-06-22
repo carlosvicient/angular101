@@ -7,7 +7,7 @@
 
 
     /**
-     * Controlador del módulo 'app'
+     * Controlador del mÃ³dulo 'app'
      * @constructor
      */
     function AppController(){

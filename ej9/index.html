@@ -1,8 +1,9 @@
 <!doctype html>
-<!--Indicamos que el elemento html es el root de nuestra aplicación AngularJS-->
-<!--Y que toda la lógica de la aplicación esta encapsulada en el módulo con nombre "app"-->
+<!--Indicamos que el elemento html es el root de nuestra aplicaciÃ³n AngularJS-->
+<!--Y que toda la lÃ³gica de la aplicaciÃ³n esta encapsulada en el mÃ³dulo con nombre "app"-->
 <html ng-app="app">
     <head>
+        <meta charset="UTF-8">
         <!-- Importamos Angular 1.5 desde cdn de google -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 
@@ -10,8 +11,8 @@
         <link rel="stylesheet" type="text/css" href="app.css">
     </head>
 
-    <!-- Tod0 el código dentro del elemento body se gestionará -->
-    <!-- por el controlador con nombre "AppController". Además,-->
+    <!-- Tod0 el cÃ³digo dentro del elemento body se gestionarÃ¡ -->
+    <!-- por el controlador con nombre "AppController". AdemÃ¡s,-->
     <!-- usamos creamos un "alias" para usar el controlador "appCtrl" -->
     <body ng-controller="AppController as appCtrl">
 
@@ -24,7 +25,7 @@
             </label>
             <label>
                 <input type="radio" ng-model="appCtrl.sortBy" value="rating"/>
-                Ordenar por puntuación
+                Ordenar por puntuaciÃ³n
             </label>
             <label>
                 <input type="checkbox" ng-model="appCtrl.reverse"/>
@@ -36,6 +37,7 @@
         <div>
             <h1>Hoteles</h1>
             <ul>
+                <!-- Ordenados por search y/o nombre o rating-->
                 <li ng-repeat="hotel in appCtrl.hotels | filter:appCtrl.search | orderBy:appCtrl.sortBy:appCtrl.reverse">
                     <span class="hotel-name">{{hotel.name | uppercase}}</span>
                     <span class="hotel-rating">{{hotel.rating | number:1}}</span>
@@ -43,7 +45,7 @@
             </ul>
         </div>
 
-        <!-- Importación scripts propios -->
+        <!-- ImportaciÃ³n scripts propios -->
         <script src="./app.module.js"></script>
         <script src="./app.controller.js"></script>
     </body>
